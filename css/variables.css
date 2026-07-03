@@ -1,0 +1,90 @@
+:root {
+  /* Surfaces */
+  --bg-0: #0d0e1a;
+  --bg-1: #14162a;
+  --bg-2: #1c1f38;
+  --bg-3: #262a4a;
+  --surface-border: #383e68;
+
+  /* Text */
+  --text-0: #f4f5fb;
+  --text-1: #c4c8e0;
+  --text-2: #8a8fb8;
+  --text-muted: #5c6088;
+
+  /* Brand / accent */
+  --accent: #8b5cf6;
+  --accent-2: #ec4899;
+  --accent-glow: rgba(139, 92, 246, 0.45);
+
+  /* Currencies */
+  --gem-color: #4dd9ff;
+  --gold-color: #ffcb47;
+  --stamina-color: #6bffa0;
+
+  /* Rarity tiers (Common -> Legendary) */
+  --rarity-1: #9aa0b8;
+  --rarity-2: #4ade80;
+  --rarity-3: #4da6ff;
+  --rarity-4: #b16bff;
+  --rarity-5: #ffcb47;
+
+  --rarity-1-glow: rgba(154, 160, 184, 0.5);
+  --rarity-2-glow: rgba(74, 222, 128, 0.55);
+  --rarity-3-glow: rgba(77, 166, 255, 0.55);
+  --rarity-4-glow: rgba(177, 107, 255, 0.6);
+  --rarity-5-glow: rgba(255, 203, 71, 0.7);
+
+  /* Semantic */
+  --success: #4ade80;
+  --danger: #ff5c7a;
+  --warning: #ffcb47;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+
+  /* Typography */
+  --font-sans:
+    "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-rounded:
+    ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa, Manjari,
+    "Arial Rounded MT", "Arial Rounded MT Bold", Calibri, source-sans-pro,
+    sans-serif;
+  --font-display:
+    Superclarendon, "Bookman Old Style", "URW Bookman", "URW Bookman L",
+    "Georgia Pro", Georgia, serif;
+  --font-emoji:
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-monospace:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-med: 300ms;
+  --dur-slow: 600ms;
+
+  /* Layout */
+  --nav-height: 64px;
+  --topbar-height: 56px;
+  --max-width: 1100px;
+}
