@@ -73,6 +73,32 @@ comfy-cli -W 512 -H 512 -o "assets/character/yuki" anime "anime fashion detail, 
 comfy-cli -W 512 -H 512 -o "assets/character/zephyr" anime "anime fashion detail, windrider coat, lightweight blue windbreaker jacket with white cloud patterns, scarf flowing dramatically, aerodynamic travel gear, aviation goggles, dynamic wind-swept style"
 comfy-cli -W 512 -H 512 -o "assets/character/zephyr" anime "anime fashion detail, breezy scarf and goggles, casual open vest, wind-themed accessories, loose fitting clothes for mobility, scout aesthetic, lightweight materials, adventurous look"
 
+# Taro (1★, farmhand)
+comfy-cli -W 512 -H 768 -o "assets/character/taro" anime "anime farm boy, messy brown hair under straw hat, warm friendly smile, tanned skin, wearing simple blue overalls and a faded green shirt, holding a wooden hoe, surrounded by rice fields, sunshine, warm rural atmosphere, cute simple character design"
+# Mochi (1★, sentient slime)
+comfy-cli -W 512 -H 768 -o "assets/character/mochi" anime "anime chibi sentient food creature, adorable round mochi shape with tiny face, big sparkly eyes, soft squishy pink and white body, tiny stubby arms, springy bouncy pose, cute playful expression, simple background"
+# Bree (1★, novice apprentice)
+comfy-cli -W 512 -H 768 -o "assets/character/bree" anime "anime novice mage girl, messy short auburn hair tied in pigtails, big enthusiastic eyes, wearing an oversized blue apprentice robe with singe marks, holding a sparking wooden wand, look of surprise, magical sparks flying, whimsical atmosphere"
+
+# Taro outfits (2)
+comfy-cli -W 512 -H 512 -o "assets/character/taro" anime "anime fashion detail, farmer overalls with dirt smudges, simple blue denim overalls over a white shirt, straw hat, well-worn work boots, practical rural workwear, warm earthy colors"
+comfy-cli -W 512 -H 512 -o "assets/character/taro" anime "anime fashion detail, festive happi coat, traditional Japanese festival coat in blue and white, obi belt, hand towels hanging at waist, cheerful festival fashion, summer matsuri vibe"
+
+# Mochi outfits (2)
+comfy-cli -W 512 -H 512 -o "assets/character/mochi" anime "anime fashion detail, cute berry hat with tiny scarf, red strawberry-shaped hat sitting on a round head, soft yellow scarf wrapped around, adorable winter accessories, chibi clothing detail"
+comfy-cli -W 512 -H 512 -o "assets/character/mochi" anime "anime fashion detail, tiny golden crown with leaf accents, small delicate crown with green leaf decorations, royal slime aesthetic, cute regal accessories, shiny metal details"
+
+# Bree outfits (2)
+comfy-cli -W 512 -H 512 -o "assets/character/bree" anime "anime fashion detail, novice apprentice robe, oversized blue magical robe with white trim, simple cloth belt, slightly too long sleeves, beginner mage uniform, cute earnest look"
+comfy-cli -W 512 -H 512 -o "assets/character/bree" anime "anime fashion detail, oversized cozy sweater in soft cream color, thick knitted texture, long sleeves covering hands, comfortable loungewear, warm and fuzzy, cute casual fashion"
+
+# Taro weapon
+comfy-cli -W 512 -H 512 -o "assets/weapon" anime "anime item art, rusty farm hoe with worn wooden handle, simple but sturdy gardening tool, weathered metal blade with orange rust spots, dirt still on the tip, humble rural weapon, dark background"
+# Mochi weapon
+comfy-cli -W 512 -H 512 -o "assets/weapon" anime "anime item art, sticky pink tendril weapon, gooey stretchy appendage with a tiny tip, translucent slime texture, cute but weird organic weapon, soft pink and white, dark background"
+# Bree weapon
+comfy-cli -W 512 -H 512 -o "assets/weapon" anime "anime item art, wooden training wand with spiral grain, simple unadorned wood surface, tiny sparks at the tip, beginner magic tool, rustic wand design, dark background, detailed weapon illustration"
+
 # Weapons (8) - item art style, floating on dark background
 comfy-cli -o "assets/weapon" -W 512 -H 512 anime "anime item art, glowing ribbon-shaped katana with flame patterns, elegant sword design, golden and red energy aura, floating on dark background, detailed weapon illustration"
 comfy-cli -o "assets/weapon" -W 512 -H 512 anime "anime item art, flame dancer katana with orange fire trails, ornate hilt with ribbon wraps, blazing blade effect, dark background, detailed weapon illustration"

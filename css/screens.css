@@ -304,13 +304,8 @@
 
 .equip-slots {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-4);
-}
-.equip-slot {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
 }
 .equip-slot__label {
   font-size: 0.75rem;
@@ -318,14 +313,48 @@
   letter-spacing: 0.06em;
   color: var(--text-2);
 }
-.equip-slot select {
-  width: 100%;
-  padding: var(--space-2) var(--space-3);
+.equip-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
   background: var(--bg-2);
   border: 1px solid var(--surface-border);
-  border-radius: var(--radius-sm);
-  color: var(--text-0);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.equip-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.equip-card .item-icon {
+  width: 56px;
+  flex-shrink: 0;
+}
+.equip-card__body {
+  min-width: 0;
+}
+.equip-card__name {
+  font-weight: 700;
   font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.equip-card__bonus {
+  font-size: 0.72rem;
+  margin-top: 2px;
+}
+.equip-card__plus {
+  font-size: 1.4rem;
+  color: var(--text-2);
+}
+.item-icon--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
 }
 
 .bond-list {

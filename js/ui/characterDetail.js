@@ -92,23 +92,73 @@ export function renderCharacterDetail(container, params) {
   );
 
   const equipSlots = el("div", { class: "equip-slots" }, [
-    equipSelect("Outfit", "outfit", GAME_DATA.outfits.filter((o) => o.characterId === charId && state.outfits[o.id])),
-    equipSelect("Weapon", "weapon", GAME_DATA.weapons.filter((w) => w.characterId === charId && state.weapons[w.id])),
-    equipSelect("Accessory", "accessory", GAME_DATA.accessories.filter((a) => state.accessories[a.id]))
+    equipSlotCard(
+      "Outfit", "outfit",
+      owned.outfit && findById(GAME_DATA.outfits, owned.outfit),
+      GAME_DATA.outfits.filter((o) => o.characterId === charId && state.outfits[o.id])
+    ),
+    equipSlotCard(
+      "Weapon", "weapon",
+      owned.weapon && findById(GAME_DATA.weapons, owned.weapon),
+      GAME_DATA.weapons.filter((w) => w.characterId === charId && state.weapons[w.id])
+    ),
+    equipSlotCard(
+      "Accessory", "accessory",
+      owned.accessory && findById(GAME_DATA.accessories, owned.accessory),
+      GAME_DATA.accessories.filter((a) => state.accessories[a.id])
+    )
   ]);
 
-  function equipSelect(label, slot, options) {
-    const select = el("select", {
-      onchange: (e) => store.update((s) => equipItem(s, charId, slot, e.target.value))
+  function equipSlotCard(label, slot, equippedDef, options) {
+    return el("div", {
+      class: "equip-card",
+      onclick: () => openEquipPicker(label, slot, options)
     }, [
-      el("option", { value: "" }, "— None —"),
-      ...options.map((o) => el("option", { value: o.id }, o.name))
+      equippedDef
+        ? itemIcon({ image: equippedDef.image, name: equippedDef.name, rarity: equippedDef.rarity })
+        : el("div", { class: "item-icon item-icon--empty" }, el("span", { class: "equip-card__plus" }, "+")),
+      el("div", { class: "equip-card__body" }, [
+        el("div", { class: "equip-slot__label" }, label),
+        el("div", { class: "equip-card__name" }, equippedDef ? equippedDef.name : "— None —"),
+        equippedDef && el("div", { class: "equip-card__bonus text-muted" }, formatBonuses(equippedDef.bonuses))
+      ])
     ]);
-    select.value = owned[slot] ?? "";
-    return el("div", { class: "equip-slot" }, [
-      el("span", { class: "equip-slot__label" }, label),
-      select
+  }
+
+  function openEquipPicker(label, slot, options) {
+    const overlay = el("div", {
+      class: "overlay",
+      onclick: (e) => { if (e.target === overlay) overlay.remove(); }
+    });
+
+    function pick(itemId) {
+      store.update((s) => equipItem(s, charId, slot, itemId));
+      overlay.remove();
+    }
+
+    const noneCard = el("div", { class: "item-card is-clickable", onclick: () => pick("") }, [
+      el("div", { class: "item-icon item-icon--empty" }, el("span", { class: "equip-card__plus" }, "✕")),
+      el("div", { class: "item-card__name" }, "None")
     ]);
+
+    const optionCards = options.map((o) =>
+      el("div", { class: "item-card is-clickable", onclick: () => pick(o.id) }, [
+        itemIcon({ image: o.image, name: o.name, rarity: o.rarity }),
+        el("div", { class: "item-card__name" }, o.name),
+        el("div", { class: "item-card__meta" }, formatBonuses(o.bonuses))
+      ])
+    );
+
+    const modal = el("div", { class: "modal" }, [
+      el("button", { class: "modal__close", onclick: () => overlay.remove() }, "✕"),
+      el("h3", {}, `Select ${label}`),
+      options.length === 0
+        ? el("p", { class: "text-muted", style: "margin-top:1rem" }, "No items owned for this slot.")
+        : el("div", { class: "grid", style: "margin-top:1rem" }, [noneCard, ...optionCards])
+    ]);
+
+    overlay.append(modal);
+    document.body.append(overlay);
   }
 
   const bonds = getActiveBonds(charId, state.team);
@@ -133,6 +183,21 @@ export function renderCharacterDetail(container, params) {
       el("div", { class: "panel", style: "margin-top:1rem" }, [el("h3", {}, "Bond Bonuses"), bondList])
     ])
   );
+}
+
+const BONUS_LABELS = {
+  hpPercent: "HP",
+  atkPercent: "ATK",
+  defPercent: "DEF",
+  spdPercent: "SPD",
+  critRateFlat: "Crit Rate",
+  critDmgFlat: "Crit DMG"
+};
+
+function formatBonuses(bonuses) {
+  return Object.entries(bonuses)
+    .map(([key, value]) => `+${value}% ${BONUS_LABELS[key] ?? key}`)
+    .join(", ");
 }
 
 function statRow(label, value) {

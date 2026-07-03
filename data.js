@@ -682,6 +682,183 @@ export const GAME_DATA = {
         { with: "bolt", name: "Storm Riders", desc: "Both gain +12% Crit DMG" },
       ],
     },
+    // -----------------------------------------------------------------------
+    // TARO — 1★ Common (farmhand)
+    // -----------------------------------------------------------------------
+    {
+      id: "taro",
+      name: "Taro",
+      rarity: 1,
+      class: "Common",
+      description:
+        "A cheerful farm boy who swings a hoe like a weapon. Simple, honest, and surprisingly sturdy.",
+      image: "assets/character/taro/comfy-cli_01910_.png",
+      baseStats: {
+        hp: 550,
+        atk: 22,
+        def: 22,
+        spd: 45,
+        critRate: 2,
+        critDmg: 105,
+      },
+      growth: {
+        hpPerLevel: 18,
+        atkPerLevel: 2,
+        defPerLevel: 2,
+        spdPerLevel: 1,
+      },
+      skills: [
+        {
+          name: "Hoe Swing",
+          type: "basic",
+          cost: 0,
+          desc: "Swing his trusty hoe. Deals ATK damage.",
+          effect: { type: "damage", multiplier: 1.0 },
+        },
+        {
+          name: "Fertilizer Toss",
+          type: "skill",
+          cost: 18,
+          desc: "Throws dirt in the enemy's face. Deals ATK × 0.5 damage and reduces their ATK by 10% for 2 turns.",
+          effect: {
+            type: "damage_debuff",
+            multiplier: 0.5,
+            debuff: { stat: "atk", percent: 0.1, duration: 2 },
+          },
+        },
+        {
+          name: "Harvest Time",
+          type: "ultimate",
+          cost: 100,
+          desc: "Sweeps the field. Deals ATK × 1.2 damage to all enemies and heals self for 10% max HP.",
+          effect: { type: "damage_heal", multiplier: 1.2, healPercent: 0.1 },
+        },
+      ],
+      bondBonuses: [
+        { with: "pip", name: "Farm Friends", desc: "Both gain +5% DEF" },
+        { with: "mochi", name: "Snack Time", desc: "Both gain +5% HP" },
+      ],
+    },
+    // -----------------------------------------------------------------------
+    // MOCHI — 1★ Common (sentient slime)
+    // -----------------------------------------------------------------------
+    {
+      id: "mochi",
+      name: "Mochi",
+      rarity: 1,
+      class: "Common",
+      description:
+        "A bouncy sentient mochi ball. Don't let the cute face fool you — it's a tactical snack.",
+      image: "assets/character/mochi/comfy-cli_01911_.png",
+      baseStats: {
+        hp: 480,
+        atk: 20,
+        def: 18,
+        spd: 60,
+        critRate: 3,
+        critDmg: 105,
+      },
+      growth: {
+        hpPerLevel: 15,
+        atkPerLevel: 2,
+        defPerLevel: 2,
+        spdPerLevel: 2,
+      },
+      skills: [
+        {
+          name: "Squish",
+          type: "basic",
+          cost: 0,
+          desc: "Flattens and lunges. Deals ATK damage.",
+          effect: { type: "damage", multiplier: 1.0 },
+        },
+        {
+          name: "Sticky Body",
+          type: "skill",
+          cost: 18,
+          desc: "Sticks to the enemy. Deals ATK × 0.6 damage and reduces their SPD by 15% for 2 turns.",
+          effect: {
+            type: "damage_debuff",
+            multiplier: 0.6,
+            debuff: { stat: "spd", percent: 0.15, duration: 2 },
+          },
+        },
+        {
+          name: "Mochi Explosion",
+          type: "ultimate",
+          cost: 100,
+          desc: "Launches sticky blobs everywhere. Deals ATK × 1.3 damage to all enemies and has a 30% chance to slow each by 10% for 1 turn.",
+          effect: {
+            type: "damage_stun",
+            multiplier: 1.3,
+            stunChance: 0.3,
+            stunDuration: 1,
+          },
+        },
+      ],
+      bondBonuses: [
+        { with: "taro", name: "Snack Time", desc: "Both gain +5% HP" },
+        { with: "bree", name: "Playmates", desc: "Both gain +5% SPD" },
+      ],
+    },
+    // -----------------------------------------------------------------------
+    // BREE — 1★ Common (novice apprentice)
+    // -----------------------------------------------------------------------
+    {
+      id: "bree",
+      name: "Bree",
+      rarity: 1,
+      class: "Common",
+      description:
+        "A novice mage who can barely control her own sparks. Enthusiastic but accident-prone.",
+      image: "assets/character/bree/comfy-cli_01912_.png",
+      baseStats: {
+        hp: 500,
+        atk: 28,
+        def: 15,
+        spd: 50,
+        critRate: 5,
+        critDmg: 110,
+      },
+      growth: {
+        hpPerLevel: 16,
+        atkPerLevel: 3,
+        defPerLevel: 1,
+        spdPerLevel: 2,
+      },
+      skills: [
+        {
+          name: "Spark",
+          type: "basic",
+          cost: 0,
+          desc: "Fires a small bolt of magic. Deals ATK damage.",
+          effect: { type: "damage", multiplier: 1.0 },
+        },
+        {
+          name: "Accidental Barrier",
+          type: "skill",
+          cost: 20,
+          desc: "Trips and accidentally casts a shield. Gains +15% DEF for 2 turns and restores 5% HP.",
+          effect: {
+            type: "heal_buff_self_def",
+            healPercent: 0.05,
+            defValue: 0.15,
+            duration: 2,
+          },
+        },
+        {
+          name: "Wild Magic",
+          type: "ultimate",
+          cost: 100,
+          desc: "Loses control and unleashes chaotic energy. Deals ATK × 1.6 damage to all enemies.",
+          effect: { type: "damage_aoe", multiplier: 1.6 },
+        },
+      ],
+      bondBonuses: [
+        { with: "mochi", name: "Playmates", desc: "Both gain +5% SPD" },
+        { with: "pip", name: "Tiny Team", desc: "Both gain +5% ATK" },
+      ],
+    },
   ],
 
   // =========================================================================
@@ -1285,6 +1462,63 @@ export const GAME_DATA = {
       image: "assets/character/zephyr/comfy-cli_01854_.png",
       bonuses: { hpPercent: 6, spdPercent: 5 },
     },
+    // Taro outfits
+    {
+      id: "taro_outfit_1",
+      name: "Farmer's Overalls",
+      characterId: "taro",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/taro/comfy-cli_01913_.png",
+      bonuses: { hpPercent: 6, atkPercent: 2 },
+    },
+    {
+      id: "taro_outfit_2",
+      name: "Festive Happi Coat",
+      characterId: "taro",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/taro/comfy-cli_01914_.png",
+      bonuses: { hpPercent: 4, atkPercent: 3 },
+    },
+    // Mochi outfits
+    {
+      id: "mochi_outfit_1",
+      name: "Berry Hat & Scarf",
+      characterId: "mochi",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/mochi/comfy-cli_01915_.png",
+      bonuses: { hpPercent: 5, spdPercent: 3 },
+    },
+    {
+      id: "mochi_outfit_2",
+      name: "Tiny Crown",
+      characterId: "mochi",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/mochi/comfy-cli_01916_.png",
+      bonuses: { hpPercent: 3, defPercent: 3 },
+    },
+    // Bree outfits
+    {
+      id: "bree_outfit_1",
+      name: "Novice Apprentice Robe",
+      characterId: "bree",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/bree/comfy-cli_01917_.png",
+      bonuses: { atkPercent: 4, hpPercent: 3 },
+    },
+    {
+      id: "bree_outfit_2",
+      name: "Oversized Cozy Sweater",
+      characterId: "bree",
+      rarity: 1,
+      slot: "main",
+      image: "assets/character/bree/comfy-cli_01918_.png",
+      bonuses: { hpPercent: 5, spdPercent: 2 },
+    },
   ],
 
   // =========================================================================
@@ -1672,6 +1906,33 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/weapon/comfy-cli_01874_.png",
       bonuses: { spdPercent: 8, critRateFlat: 3 },
+    },
+    // Taro weapons
+    {
+      id: "taro_weapon_1",
+      name: "Rusty Hoe",
+      characterId: "taro",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_01919_.png",
+      bonuses: { atkPercent: 3, hpPercent: 3 },
+    },
+    // Mochi weapons
+    {
+      id: "mochi_weapon_1",
+      name: "Sticky Tendril",
+      characterId: "mochi",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_01920_.png",
+      bonuses: { atkPercent: 2, spdPercent: 3 },
+    },
+    // Bree weapons
+    {
+      id: "bree_weapon_1",
+      name: "Wooden Training Wand",
+      characterId: "bree",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_01921_.png",
+      bonuses: { atkPercent: 4, spdPercent: 2 },
     },
   ],
 
