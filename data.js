@@ -470,6 +470,218 @@ export const GAME_DATA = {
         },
       ],
     },
+    // -----------------------------------------------------------------------
+    // NOVA — 5★ Mage (star/cosmos)
+    // -----------------------------------------------------------------------
+    {
+      id: "nova",
+      name: "Nova",
+      rarity: 5,
+      class: "Mage",
+      description:
+        "Star-weaving mage who reads the cosmos. Dreamy yet surprisingly fierce when provoked.",
+      image: "assets/character/nova/comfy-cli_nova_00_.png",
+      baseStats: {
+        hp: 850,
+        atk: 135,
+        def: 30,
+        spd: 74,
+        critRate: 22,
+        critDmg: 165,
+      },
+      growth: {
+        hpPerLevel: 32,
+        atkPerLevel: 13,
+        defPerLevel: 3,
+        spdPerLevel: 2,
+      },
+      skills: [
+        {
+          name: "Star Bolt",
+          type: "basic",
+          cost: 0,
+          desc: "Launches a bolt of condensed starlight. Deals ATK damage.",
+          effect: { type: "damage", multiplier: 1.0 },
+        },
+        {
+          name: "Meteor Shower",
+          type: "skill",
+          cost: 35,
+          desc: "Summons falling stars. Deals ATK × 2.0 damage to all enemies.",
+          effect: { type: "damage_aoe", multiplier: 2.0 },
+        },
+        {
+          name: "Supernova",
+          type: "ultimate",
+          cost: 100,
+          desc: "Unleashes a stellar explosion. Deals ATK × 2.8 damage to all enemies and burns them for 2 turns (10% ATK per turn).",
+          effect: { type: "damage_burn_aoe", multiplier: 2.8, burnPercent: 0.1, burnDuration: 2 },
+        },
+      ],
+      bondBonuses: [
+        { with: "luna", name: "Cosmic Frost", desc: "Both gain +12% ATK" },
+        { with: "kira", name: "Blazing Stars", desc: "Nova gains +20% Crit DMG" },
+      ],
+    },
+    // -----------------------------------------------------------------------
+    // GRIMM — 4★ Tank (dark knight)
+    // -----------------------------------------------------------------------
+    {
+      id: "grimm",
+      name: "Grimm",
+      rarity: 4,
+      class: "Tank",
+      description:
+        "Taciturn knight draped in shadow. His past is a mystery, but his loyalty is absolute.",
+      image: "assets/character/grimm/comfy-cli_grimm_00_.png",
+      baseStats: {
+        hp: 1700,
+        atk: 60,
+        def: 115,
+        spd: 48,
+        critRate: 5,
+        critDmg: 125,
+      },
+      growth: {
+        hpPerLevel: 65,
+        atkPerLevel: 5,
+        defPerLevel: 8,
+        spdPerLevel: 1,
+      },
+      skills: [
+        {
+          name: "Dark Strike",
+          type: "basic",
+          cost: 0,
+          desc: "Strike with shadow energy. Deals ATK damage and heals for 20% of damage dealt.",
+          effect: { type: "damage_lifesteal", multiplier: 1.0, lifesteal: 0.2 },
+        },
+        {
+          name: "Shadow Cloak",
+          type: "skill",
+          cost: 30,
+          desc: "Wraps himself in shadows. Gains 30% dodge chance for 2 turns.",
+          effect: { type: "buff_self_dodge", value: 0.3, duration: 2 },
+        },
+        {
+          name: "Nightfall",
+          type: "ultimate",
+          cost: 100,
+          desc: "Engulfs all enemies in darkness. Deals ATK × 1.8 damage and reduces their DEF by 20% for 2 turns.",
+          effect: { type: "damage_aoe_debuff", multiplier: 1.8, debuffDef: 0.2, duration: 2 },
+        },
+      ],
+      bondBonuses: [
+        { with: "ren", name: "Iron Brothers", desc: "Both gain +15% DEF" },
+        { with: "nova", name: "Moonlight Pact", desc: "Grimm gains +10% HP; Nova gains +5% ATK" },
+      ],
+    },
+    // -----------------------------------------------------------------------
+    // YUKI — 3★ Healer (forest/nature)
+    // -----------------------------------------------------------------------
+    {
+      id: "yuki",
+      name: "Yuki",
+      rarity: 3,
+      class: "Healer",
+      description:
+        "Forest spirit in human form. Speaks to plants, which she insists is perfectly normal.",
+      image: "assets/character/yuki/comfy-cli_yuki_00_.png",
+      baseStats: {
+        hp: 900,
+        atk: 45,
+        def: 38,
+        spd: 65,
+        critRate: 5,
+        critDmg: 115,
+      },
+      growth: {
+        hpPerLevel: 38,
+        atkPerLevel: 4,
+        defPerLevel: 4,
+        spdPerLevel: 2,
+      },
+      skills: [
+        {
+          name: "Blossom Touch",
+          type: "basic",
+          cost: 0,
+          desc: "Gently touches an ally with healing petals. Heals for HP × 0.6.",
+          effect: { type: "heal", multiplier: 0.6 },
+        },
+        {
+          name: "Forest Blessing",
+          type: "skill",
+          cost: 25,
+          desc: "Blesses all allies with forest spirits. Heals each ally for HP × 0.4 and grants regen (5 HP per turn) for 3 turns.",
+          effect: { type: "heal_all_regen", healMultiplier: 0.4, regenAmount: 5, duration: 3 },
+        },
+        {
+          name: "Nature's Wrath",
+          type: "ultimate",
+          cost: 100,
+          desc: "Calls upon the forest to both heal and harm. Heals all allies for HP × 1.2 and deals ATK × 1.0 damage to all enemies.",
+          effect: { type: "heal_all_damage_aoe", healMultiplier: 1.2, damageMultiplier: 1.0 },
+        },
+      ],
+      bondBonuses: [
+        { with: "suki", name: "Garden Kitchen", desc: "Both heal effects +10%" },
+        { with: "miko", name: "Spirits of the Forest", desc: "Yuki gains +5 SPD; Miko gains +5% ATK" },
+      ],
+    },
+    // -----------------------------------------------------------------------
+    // ZEPHYR — 2★ Assassin (wind)
+    // -----------------------------------------------------------------------
+    {
+      id: "zephyr",
+      name: "Zephyr",
+      rarity: 2,
+      class: "Assassin",
+      description:
+        "Incredibly fast scout who talks at the speed of wind. Literally never stops moving.",
+      image: "assets/character/zephyr/comfy-cli_zephyr_00_.png",
+      baseStats: {
+        hp: 650,
+        atk: 70,
+        def: 22,
+        spd: 110,
+        critRate: 28,
+        critDmg: 175,
+      },
+      growth: {
+        hpPerLevel: 22,
+        atkPerLevel: 5,
+        defPerLevel: 2,
+        spdPerLevel: 5,
+      },
+      skills: [
+        {
+          name: "Gust Slash",
+          type: "basic",
+          cost: 0,
+          desc: "A slash carried by the wind. Deals ATK damage.",
+          effect: { type: "damage", multiplier: 1.0 },
+        },
+        {
+          name: "Tailwind",
+          type: "skill",
+          cost: 20,
+          desc: "Harnesses the wind. Gains +30% SPD and +15% ATK for 2 turns.",
+          effect: { type: "buff_self_spd_atk", spdValue: 0.3, atkValue: 0.15, duration: 2 },
+        },
+        {
+          name: "Tempest Strike",
+          type: "ultimate",
+          cost: 100,
+          desc: "Unleashes a devastating wind attack. Deals ATK × 4.0 damage to a single target (ignores DEF).",
+          effect: { type: "damage_true", multiplier: 4.0 },
+        },
+      ],
+      bondBonuses: [
+        { with: "jax", name: "Speed Demons", desc: "Both gain +8 SPD" },
+        { with: "bolt", name: "Storm Riders", desc: "Both gain +12% Crit DMG" },
+      ],
+    },
   ],
 
   // =========================================================================
@@ -629,6 +841,162 @@ export const GAME_DATA = {
       image: null,
       bonuses: { hpPercent: 5, atkPercent: 3 },
     },
+    // Kira extra outfit
+    {
+      id: "kira_outfit_3",
+      name: "Phoenix Blossom Kimono",
+      characterId: "kira",
+      rarity: 4,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 10, critRateFlat: 8 },
+    },
+    // Ren extra outfit
+    {
+      id: "ren_outfit_3",
+      name: "Ceremonial Guard Plate",
+      characterId: "ren",
+      rarity: 3,
+      slot: "main",
+      image: null,
+      bonuses: { defPercent: 12, hpPercent: 5 },
+    },
+    // Luna extra outfit
+    {
+      id: "luna_outfit_3",
+      name: "Frostweaver Casual Wear",
+      characterId: "luna",
+      rarity: 3,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 8, spdPercent: 8 },
+    },
+    // Miko extra outfit
+    {
+      id: "miko_outfit_3",
+      name: "Festival Shrine Maiden",
+      characterId: "miko",
+      rarity: 2,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 5, hpPercent: 5 },
+    },
+    // Suki extra outfit
+    {
+      id: "suki_outfit_3",
+      name: "Street Food Vendor Outfit",
+      characterId: "suki",
+      rarity: 2,
+      slot: "main",
+      image: null,
+      bonuses: { hpPercent: 8, spdPercent: 5 },
+    },
+    // Bolt extra outfit
+    {
+      id: "bolt_outfit_3",
+      name: "Training Gi",
+      characterId: "bolt",
+      rarity: 2,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 5, spdPercent: 5 },
+    },
+    // Jax extra outfit
+    {
+      id: "jax_outfit_3",
+      name: "Casual Hoodie",
+      characterId: "jax",
+      rarity: 1,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 3, spdPercent: 5 },
+    },
+    // Pip extra outfit
+    {
+      id: "pip_outfit_3",
+      name: "Pajama Onesie",
+      characterId: "pip",
+      rarity: 1,
+      slot: "main",
+      image: null,
+      bonuses: { hpPercent: 8, atkPercent: 2 },
+    },
+    // Nova outfits
+    {
+      id: "nova_outfit_1",
+      name: "Celestial Gown",
+      characterId: "nova",
+      rarity: 5,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 18, critRateFlat: 8 },
+    },
+    {
+      id: "nova_outfit_2",
+      name: "Stargazer's Mantle",
+      characterId: "nova",
+      rarity: 4,
+      slot: "main",
+      image: null,
+      bonuses: { atkPercent: 12, hpPercent: 5 },
+    },
+    // Grimm outfits
+    {
+      id: "grimm_outfit_1",
+      name: "Midnight Armor",
+      characterId: "grimm",
+      rarity: 4,
+      slot: "main",
+      image: null,
+      bonuses: { defPercent: 18, hpPercent: 10 },
+    },
+    {
+      id: "grimm_outfit_2",
+      name: "Shadow Tunic",
+      characterId: "grimm",
+      rarity: 3,
+      slot: "main",
+      image: null,
+      bonuses: { defPercent: 10, spdPercent: 8 },
+    },
+    // Yuki outfits
+    {
+      id: "yuki_outfit_1",
+      name: "Blossom Kimono",
+      characterId: "yuki",
+      rarity: 3,
+      slot: "main",
+      image: null,
+      bonuses: { hpPercent: 14, spdPercent: 5 },
+    },
+    {
+      id: "yuki_outfit_2",
+      name: "Mosswoven Robe",
+      characterId: "yuki",
+      rarity: 3,
+      slot: "main",
+      image: null,
+      bonuses: { hpPercent: 10, defPercent: 5 },
+    },
+    // Zephyr outfits
+    {
+      id: "zephyr_outfit_1",
+      name: "Windrider's Coat",
+      characterId: "zephyr",
+      rarity: 2,
+      slot: "main",
+      image: null,
+      bonuses: { spdPercent: 12, atkPercent: 5 },
+    },
+    {
+      id: "zephyr_outfit_2",
+      name: "Breezy Scarf and Goggles",
+      characterId: "zephyr",
+      rarity: 2,
+      slot: "main",
+      image: null,
+      bonuses: { spdPercent: 8, critRateFlat: 5 },
+    },
   ],
 
   // =========================================================================
@@ -771,6 +1139,146 @@ export const GAME_DATA = {
       image: "assets/weapon/comfy-cli_01697_.png",
       bonuses: { atkPercent: 3, hpPercent: 8 },
     },
+    // Kira extra weapon
+    {
+      id: "kira_weapon_3",
+      name: "Ember Shortsword",
+      characterId: "kira",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_kira_w3_.png",
+      bonuses: { atkPercent: 10, hpPercent: 5 },
+    },
+    // Ren extra weapon
+    {
+      id: "ren_weapon_3",
+      name: "Vanguard's Lance",
+      characterId: "ren",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_ren_w3_.png",
+      bonuses: { defPercent: 10, atkPercent: 5 },
+    },
+    // Luna extra weapon
+    {
+      id: "luna_weapon_3",
+      name: "Crystal Focus",
+      characterId: "luna",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_luna_w3_.png",
+      bonuses: { atkPercent: 10, spdPercent: 5 },
+    },
+    // Miko extra weapon
+    {
+      id: "miko_weapon_3",
+      name: "Blessed Charm String",
+      characterId: "miko",
+      rarity: 2,
+      image: "assets/weapon/comfy-cli_miko_w3_.png",
+      bonuses: { atkPercent: 5, hpPercent: 5 },
+    },
+    // Suki extra weapon
+    {
+      id: "suki_weapon_3",
+      name: "Herbalist's Mortar",
+      characterId: "suki",
+      rarity: 2,
+      image: "assets/weapon/comfy-cli_suki_w3_.png",
+      bonuses: { hpPercent: 8, defPercent: 5 },
+    },
+    // Bolt extra weapon
+    {
+      id: "bolt_weapon_3",
+      name: "Static Knuckles",
+      characterId: "bolt",
+      rarity: 2,
+      image: "assets/weapon/comfy-cli_bolt_w3_.png",
+      bonuses: { atkPercent: 5, critRateFlat: 5 },
+    },
+    // Jax extra weapon
+    {
+      id: "jax_weapon_3",
+      name: "Broken Bottle",
+      characterId: "jax",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_jax_w3_.png",
+      bonuses: { atkPercent: 5, spdPercent: 3 },
+    },
+    // Pip extra weapon
+    {
+      id: "pip_weapon_3",
+      name: "Sturdy Stick",
+      characterId: "pip",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_pip_w3_.png",
+      bonuses: { atkPercent: 3, hpPercent: 5 },
+    },
+    // Nova weapons
+    {
+      id: "nova_weapon_1",
+      name: "Celestial Orb",
+      characterId: "nova",
+      rarity: 5,
+      image: "assets/weapon/comfy-cli_nova_w1_.png",
+      bonuses: { atkPercent: 22, critRateFlat: 5 },
+    },
+    {
+      id: "nova_weapon_2",
+      name: "Star Chart Tome",
+      characterId: "nova",
+      rarity: 4,
+      image: "assets/weapon/comfy-cli_nova_w2_.png",
+      bonuses: { atkPercent: 15, critDmgFlat: 12 },
+    },
+    // Grimm weapons
+    {
+      id: "grimm_weapon_1",
+      name: "Soul Reaver",
+      characterId: "grimm",
+      rarity: 4,
+      image: "assets/weapon/comfy-cli_grimm_w1_.png",
+      bonuses: { defPercent: 15, hpPercent: 10 },
+    },
+    {
+      id: "grimm_weapon_2",
+      name: "Shadow Brand",
+      characterId: "grimm",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_grimm_w2_.png",
+      bonuses: { defPercent: 10, atkPercent: 5 },
+    },
+    // Yuki weapons
+    {
+      id: "yuki_weapon_1",
+      name: "Verdant Branch",
+      characterId: "yuki",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_yuki_w1_.png",
+      bonuses: { hpPercent: 15, atkPercent: 5 },
+    },
+    {
+      id: "yuki_weapon_2",
+      name: "Petal Wand",
+      characterId: "yuki",
+      rarity: 3,
+      image: "assets/weapon/comfy-cli_yuki_w2_.png",
+      bonuses: { hpPercent: 10, spdPercent: 5 },
+    },
+    // Zephyr weapons
+    {
+      id: "zephyr_weapon_1",
+      name: "Gale Daggers",
+      characterId: "zephyr",
+      rarity: 2,
+      image: "assets/weapon/comfy-cli_zephyr_w1_.png",
+      bonuses: { spdPercent: 15, atkPercent: 5 },
+    },
+    {
+      id: "zephyr_weapon_2",
+      name: "Whirlwind Sling",
+      characterId: "zephyr",
+      rarity: 1,
+      image: "assets/weapon/comfy-cli_zephyr_w2_.png",
+      bonuses: { spdPercent: 10, critRateFlat: 3 },
+    },
   ],
 
   // =========================================================================
@@ -833,6 +1341,34 @@ export const GAME_DATA = {
       image: "assets/accessories/blue-gem-band.png",
       bonuses: { critRateFlat: 5, critDmgFlat: 10 },
     },
+    {
+      id: "acc_9",
+      name: "Dragon Scale Ring",
+      rarity: 4,
+      image: "assets/accessories/dragon-scale-ring.png",
+      bonuses: { defPercent: 10, hpPercent: 10 },
+    },
+    {
+      id: "acc_10",
+      name: "Mage's Circlet",
+      rarity: 4,
+      image: "assets/accessories/mage-circlet.png",
+      bonuses: { atkPercent: 12, critRateFlat: 3 },
+    },
+    {
+      id: "acc_11",
+      name: "Shadow Amulet",
+      rarity: 3,
+      image: "assets/accessories/shadow-amulet.png",
+      bonuses: { atkPercent: 8, spdPercent: 5 },
+    },
+    {
+      id: "acc_12",
+      name: "Guardian's Brooch",
+      rarity: 3,
+      image: "assets/accessories/guardian-brooch.png",
+      bonuses: { defPercent: 8, hpPercent: 5 },
+    },
   ],
 
   // =========================================================================
@@ -894,6 +1430,20 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/materials/gem-purple.png",
       effect: { type: "gold", amount: 5 },
+    },
+    {
+      id: "exp_book_legendary",
+      name: "Experience Book (Legendary)",
+      rarity: 4,
+      image: "assets/materials/book-gold.png",
+      effect: { type: "exp", amount: 800 },
+    },
+    {
+      id: "awaken_stone_epic",
+      name: "Awakening Stone (Epic)",
+      rarity: 4,
+      image: "assets/materials/gem-purple-large.png",
+      effect: { type: "awaken", amount: 3 },
     },
   ],
 
@@ -1036,6 +1586,93 @@ export const GAME_DATA = {
         },
       ],
     },
+    {
+      id: "area3",
+      name: "Frostfang Summit",
+      description:
+        "A frozen mountain peak where ancient ice spirits dwell. The cold itself is alive here.",
+      stages: [
+        {
+          id: "area3-stage1",
+          name: "Frozen Path",
+          staminaCost: 10,
+          enemies: [
+            { template: "frost-wolf", level: 11 },
+            { template: "frost-wolf", level: 11 },
+          ],
+          rewards: {
+            gems: 50,
+            gold: 400,
+            materials: [{ id: "exp_book_rare", chance: 0.6 }],
+          },
+        },
+        {
+          id: "area3-stage2",
+          name: "Glacial Tunnels",
+          staminaCost: 11,
+          enemies: [
+            { template: "frost-wolf", level: 12 },
+            { template: "ice-golem", level: 12 },
+          ],
+          rewards: {
+            gems: 55,
+            gold: 450,
+            materials: [
+              { id: "exp_book_rare", chance: 0.6 },
+              { id: "upgrade_core_rare", chance: 0.4 },
+            ],
+          },
+        },
+        {
+          id: "area3-stage3",
+          name: "Snow Sprite Grove",
+          staminaCost: 12,
+          enemies: [
+            { template: "snow-sprite", level: 13 },
+            { template: "snow-sprite", level: 13 },
+            { template: "frost-wolf", level: 12 },
+          ],
+          rewards: {
+            gems: 60,
+            gold: 500,
+            materials: [{ id: "exp_book_legendary", chance: 0.3 }],
+          },
+        },
+        {
+          id: "area3-stage4",
+          name: "The Summit Approach",
+          staminaCost: 14,
+          enemies: [
+            { template: "ice-golem", level: 14 },
+            { template: "ice-golem", level: 14 },
+            { template: "snow-sprite", level: 13 },
+          ],
+          rewards: {
+            gems: 65,
+            gold: 550,
+            materials: [
+              { id: "awaken_stone_rare", chance: 0.5 },
+              { id: "exp_book_legendary", chance: 0.4 },
+            ],
+          },
+        },
+        {
+          id: "area3-stage5",
+          name: "The Frostfang Yeti",
+          staminaCost: 18,
+          boss: true,
+          enemies: [{ template: "frostfang-yeti", level: 16 }],
+          rewards: {
+            gems: 150,
+            gold: 1000,
+            materials: [
+              { id: "awaken_stone_epic", chance: 0.5 },
+              { id: "exp_book_legendary", chance: 0.8 },
+            ],
+          },
+        },
+      ],
+    },
   ],
 
   // =========================================================================
@@ -1124,6 +1761,54 @@ export const GAME_DATA = {
         spd: 58,
         critRate: 15,
         critDmg: 160,
+      },
+    },
+    "frost-wolf": {
+      name: "Frost Wolf",
+      type: "Grunt",
+      baseStats: {
+        hp: 350,
+        atk: 42,
+        def: 18,
+        spd: 65,
+        critRate: 10,
+        critDmg: 135,
+      },
+    },
+    "ice-golem": {
+      name: "Ice Golem",
+      type: "Elite",
+      baseStats: {
+        hp: 800,
+        atk: 40,
+        def: 50,
+        spd: 25,
+        critRate: 4,
+        critDmg: 120,
+      },
+    },
+    "snow-sprite": {
+      name: "Snow Sprite",
+      type: "Grunt",
+      baseStats: {
+        hp: 280,
+        atk: 50,
+        def: 12,
+        spd: 75,
+        critRate: 15,
+        critDmg: 140,
+      },
+    },
+    "frostfang-yeti": {
+      name: "Frostfang Yeti",
+      type: "Boss",
+      baseStats: {
+        hp: 5000,
+        atk: 100,
+        def: 55,
+        spd: 40,
+        critRate: 12,
+        critDmg: 155,
       },
     },
   },

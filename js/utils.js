@@ -74,7 +74,7 @@ export function itemIcon({ image, name, rarity, level, count, extraClass = "" })
   });
 
   if (image) {
-    const img = el("img", { src: image, alt: name, loading: "lazy" });
+    const img = el("img", { src: image.replace(/\.png$/i, ".webp"), alt: name, loading: "lazy" });
     img.addEventListener("error", () => {
       img.replaceWith(placeholderNode(name, rarity));
     });
@@ -102,7 +102,7 @@ function placeholderNode(name, rarity) {
 /** Returns an <img> that swaps itself for a lettered placeholder on load failure or missing src. */
 export function imageOrPlaceholder(image, name) {
   if (!image) return placeholderNode(name);
-  const img = el("img", { src: image, alt: name });
+  const img = el("img", { src: image.replace(/\.png$/i, ".webp"), alt: name });
   img.addEventListener("error", () => img.replaceWith(placeholderNode(name)));
   return img;
 }
