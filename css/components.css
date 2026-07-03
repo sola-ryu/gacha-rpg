@@ -1,3 +1,23 @@
+/* ---------- Drag and drop (js/dnd.js) ---------- */
+.drag-ghost {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  transform: scale(1.04) rotate(-2deg);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+}
+.is-drag-source {
+  opacity: 0.35;
+}
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;

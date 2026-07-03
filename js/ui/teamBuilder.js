@@ -1,6 +1,7 @@
 import { GAME_DATA } from "../../data.js";
 import { store, setTeamSlot, clearTeamSlot } from "../state.js";
 import { getActiveBonds } from "../characters.js";
+import { makeDraggable } from "../dnd.js";
 import { el, itemIcon, findById, toast } from "../utils.js";
 
 export function renderTeamBuilder(container) {
@@ -9,6 +10,11 @@ export function renderTeamBuilder(container) {
 
   function charName(id) {
     return findById(GAME_DATA.characters, id)?.name ?? id;
+  }
+
+  function dropOnSlot(charId, targetSlotEl) {
+    const index = Number(targetSlotEl.dataset.slot);
+    store.update((s) => setTeamSlot(s, index, charId));
   }
 
   function slotNode(index) {
@@ -31,22 +37,16 @@ export function renderTeamBuilder(container) {
           }
         }, "✕")
       );
+      // Lets an already-placed character be dragged straight to another slot.
+      makeDraggable(slot, {
+        getPayload: () => charId,
+        dropTargetSelector: ".team-slot",
+        ignoreSelector: ".team-slot__remove",
+        onDrop: dropOnSlot
+      });
     } else {
       slot.append(el("span", { class: "team-slot__empty" }, "+"));
     }
-
-    slot.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      slot.classList.add("is-drag-over");
-    });
-    slot.addEventListener("dragleave", () => slot.classList.remove("is-drag-over"));
-    slot.addEventListener("drop", (e) => {
-      e.preventDefault();
-      slot.classList.remove("is-drag-over");
-      const draggedId = e.dataTransfer.getData("text/plain");
-      if (!draggedId) return;
-      store.update((s) => setTeamSlot(s, index, draggedId));
-    });
 
     return slot;
   }
@@ -82,7 +82,6 @@ export function renderTeamBuilder(container) {
       const inTeam = team.includes(charId);
       const card = el("div", {
         class: "item-card is-clickable",
-        draggable: "true",
         onclick: () => {
           if (inTeam) {
             store.update((s) => { s.team = s.team.map((id) => (id === charId ? null : id)); });
@@ -100,8 +99,10 @@ export function renderTeamBuilder(container) {
         el("div", { class: "item-card__name" }, def.name),
         el("div", { class: "item-card__meta" }, inTeam ? "In team" : def.class)
       ]);
-      card.addEventListener("dragstart", (e) => {
-        e.dataTransfer.setData("text/plain", charId);
+      makeDraggable(card, {
+        getPayload: () => charId,
+        dropTargetSelector: ".team-slot",
+        onDrop: dropOnSlot
       });
       return card;
     })

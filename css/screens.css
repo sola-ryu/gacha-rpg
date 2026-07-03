@@ -377,6 +377,8 @@
   border-style: solid;
   padding: 0;
   overflow: hidden;
+  cursor: grab;
+  touch-action: none;
 }
 .team-slot.is-drag-over {
   border-color: var(--accent);
@@ -413,8 +415,9 @@
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: var(--space-3);
 }
-.reserve-grid [draggable="true"] {
+.reserve-grid .item-card {
   cursor: grab;
+  touch-action: none;
 }
 .reserve-grid .item-icon.is-in-team {
   opacity: 0.35;
