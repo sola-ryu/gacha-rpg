@@ -1803,6 +1803,7 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/materials/book-brown.png",
       effect: { type: "exp", amount: 50 },
+      description: "A worn primer. Grants 50 EXP when fed to a character.",
     },
     {
       id: "exp_book_uncommon",
@@ -1810,6 +1811,7 @@ export const GAME_DATA = {
       rarity: 2,
       image: "assets/materials/book-green.png",
       effect: { type: "exp", amount: 120 },
+      description: "A study guide bound in green leather. Grants 120 EXP.",
     },
     {
       id: "exp_book_rare",
@@ -1817,6 +1819,7 @@ export const GAME_DATA = {
       rarity: 3,
       image: "assets/materials/book-blue.png",
       effect: { type: "exp", amount: 300 },
+      description: "A scholar's tome humming with insight. Grants 300 EXP.",
     },
     {
       id: "awaken_stone_uncommon",
@@ -1824,6 +1827,7 @@ export const GAME_DATA = {
       rarity: 2,
       image: "assets/materials/gem-green.png",
       effect: { type: "awaken", amount: 1 },
+      description: "A faintly glowing stone. Advances a character's awakening by 1 stage.",
     },
     {
       id: "awaken_stone_rare",
@@ -1831,6 +1835,7 @@ export const GAME_DATA = {
       rarity: 3,
       image: "assets/materials/gem-blue.png",
       effect: { type: "awaken", amount: 2 },
+      description: "A brilliant blue crystal. Advances a character's awakening by 2 stages.",
     },
     {
       id: "upgrade_core_common",
@@ -1838,6 +1843,7 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/materials/orb-steel.png",
       effect: { type: "upgrade", amount: 1 },
+      description: "A basic steel core. Adds 1 point of upgrade progress to equipment.",
     },
     {
       id: "upgrade_core_rare",
@@ -1845,6 +1851,7 @@ export const GAME_DATA = {
       rarity: 3,
       image: "assets/materials/orb-gold.png",
       effect: { type: "upgrade", amount: 3 },
+      description: "A gilded power core. Adds 3 points of upgrade progress to equipment.",
     },
     {
       id: "fragment_shard",
@@ -1852,6 +1859,7 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/materials/gem-purple.png",
       effect: { type: "gold", amount: 5 },
+      description: "A splinter of crystallized value. Sells instantly for 5 Gold.",
     },
     {
       id: "exp_book_legendary",
@@ -1859,6 +1867,7 @@ export const GAME_DATA = {
       rarity: 4,
       image: "assets/materials/book-gold.png",
       effect: { type: "exp", amount: 800 },
+      description: "A gold-embossed grimoire of forbidden knowledge. Grants 800 EXP.",
     },
     {
       id: "awaken_stone_epic",
@@ -1866,6 +1875,7 @@ export const GAME_DATA = {
       rarity: 4,
       image: "assets/materials/gem-purple-dark.png",
       effect: { type: "awaken", amount: 3 },
+      description: "A dark stone pulsing with latent power. Advances awakening by 3 stages.",
     },
     {
       id: "exp_book_ancient",
@@ -1873,6 +1883,7 @@ export const GAME_DATA = {
       rarity: 3,
       image: "assets/materials/book-blue-2.png",
       effect: { type: "exp", amount: 350 },
+      description: "A weathered tome from a forgotten age. Grants 350 EXP.",
     },
     {
       id: "exp_book_weathered",
@@ -1880,6 +1891,7 @@ export const GAME_DATA = {
       rarity: 1,
       image: "assets/materials/book-brown-2.png",
       effect: { type: "exp", amount: 60 },
+      description: "Its pages are faded but still legible. Grants 60 EXP.",
     },
     {
       id: "awaken_stone_deep",
@@ -1887,6 +1899,7 @@ export const GAME_DATA = {
       rarity: 4,
       image: "assets/materials/gem-purple-2.png",
       effect: { type: "awaken", amount: 3 },
+      description: "Mined from unfathomable depths. Advances awakening by 3 stages.",
     },
     {
       id: "mana_crystal",
@@ -1894,6 +1907,7 @@ export const GAME_DATA = {
       rarity: 2,
       image: "assets/materials/gem-blue-2.png",
       effect: { type: "awaken", amount: 1 },
+      description: "A crystal saturated with raw mana. Advances awakening by 1 stage.",
     },
     {
       id: "fragment_shard_refined",
@@ -1901,6 +1915,7 @@ export const GAME_DATA = {
       rarity: 2,
       image: "assets/materials/gem-purple-shard.png",
       effect: { type: "gold", amount: 15 },
+      description: "A purified shard of greater value. Sells instantly for 15 Gold.",
     },
     {
       id: "upgrade_core_mechanical",
@@ -1908,6 +1923,7 @@ export const GAME_DATA = {
       rarity: 4,
       image: "assets/materials/orb-gold-mechanical.png",
       effect: { type: "upgrade", amount: 5 },
+      description: "A precision-engineered core. Adds 5 points of upgrade progress to equipment.",
     },
     {
       id: "upgrade_core_tempered",
@@ -1915,6 +1931,7 @@ export const GAME_DATA = {
       rarity: 2,
       image: "assets/materials/orb-steel-mechanical.png",
       effect: { type: "upgrade", amount: 2 },
+      description: "Forged and tempered for durability. Adds 2 points of upgrade progress.",
     },
     {
       id: "ascension_cube",
@@ -1922,6 +1939,7 @@ export const GAME_DATA = {
       rarity: 4,
       image: "assets/materials/cube-gold.png",
       effect: { type: "gold", amount: 50 },
+      description: "A cube of pure compressed wealth. Sells instantly for 50 Gold.",
     },
   ],
 

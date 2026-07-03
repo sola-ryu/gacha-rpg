@@ -37,7 +37,8 @@ export function renderShop(container) {
       const cost = MATERIAL_GOLD_COST[m.rarity] ?? 100;
       return el("div", { class: "shop-item" }, [
         itemIcon({ image: m.image, name: m.name, rarity: m.rarity, count: state.materials[m.id] }),
-        el("div", { class: "item-card__name" }, m.name),
+        el("div", { class: "item-card__name shop-item__name" }, m.name),
+        el("div", { class: "shop-item__desc" }, m.description ?? ""),
         el("div", { class: "shop-item__price" }, `${cost} Gold`),
         el("button", {
           class: "btn btn-sm btn-ghost btn-block",
