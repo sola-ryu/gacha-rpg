@@ -60,7 +60,7 @@ export function renderBattleStage(container, stageId) {
   regenStamina(state);
 
   const teamDefs = state.team.filter(Boolean).map((id) => findById(GAME_DATA.characters, id));
-  const enemyPreview = stage.enemies.map((spec) => GAME_DATA.enemyTemplates[spec.template]);
+  const enemyPreview = stage.enemies.map((spec) => ({ ...GAME_DATA.enemyTemplates[spec.template], _key: spec.template }));
 
   const screen = el("div", { class: "screen" });
   const header = el("div", { class: "screen__header" }, [
@@ -80,7 +80,7 @@ export function renderBattleStage(container, stageId) {
       el("div", { class: "battle-vs" }, "VS"),
       el("div", { class: "combatant-list" }, [
         el("h4", {}, "Enemies"),
-        el("div", { class: "grid" }, enemyPreview.map((e) => itemIcon({ image: null, name: e.name, rarity: e.type === "Boss" ? 5 : e.type === "Elite" ? 3 : 1 })))
+        el("div", { class: "grid" }, enemyPreview.map((e) => itemIcon({ image: `assets/enemy/${e._key}.png`, name: e.name, rarity: e.type === "Boss" ? 5 : e.type === "Elite" ? 3 : 1 })))
       ])
     ]),
     el("button", {

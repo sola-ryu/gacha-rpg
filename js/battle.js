@@ -82,7 +82,7 @@ function buildEnemyTeam(stage) {
       side: "enemy",
       refId: spec.template,
       name: template.name,
-      image: null,
+      image: `assets/enemy/${spec.template}.png`,
       rarity: template.type === "Boss" ? 5 : template.type === "Elite" ? 3 : 1,
       stats,
       skills: [{ name: "Strike", type: "basic", cost: 0, effect: { type: "damage", multiplier: 1.0 } }],
