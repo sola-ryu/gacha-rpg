@@ -171,6 +171,23 @@ comfy-cli -o "assets/materials" -W 512 -H 512 anime "anime item art, fragment sh
 comfy-cli -o "assets/materials" -W 512 -H 512 anime "anime item art, experience book legendary, ornate golden leather cover with diamond patterns, brilliant golden glow, intricate celestial designs, magnificent tome appearance, dark background, detailed item illustration"
 comfy-cli -o "assets/materials" -W 512 -H 512 anime "anime item art, awakening stone epic, large purple crystal cluster with multiple facets, intense purple glow, complex crystalline formation, masterwork gemstone, dark background, detailed item illustration"
 
+# Enemies — Area 1: Whispering Fields
+comfy-cli -W 512 -H 512 -o "assets/enemy/slime" anime "dark fantasy monster artwork, translucent gelatinous blob creature, sickly green color, simple bubbling texture, small beady eyes, dripping slime trail, grassy plains background, monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/wolf" anime "dark fantasy monster artwork, feral wild wolf with matted gray fur, bared fangs, glowing yellow eyes, muscular lean build, snarling pose, grassy plains background, monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/bandit" anime "dark fantasy monster artwork, rugged human bandit in leather armor, hooded face, wielding curved dagger, menacing stance, grassy plains background, elite monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/warden" anime "dark fantasy monster artwork, towering armored field warden, moss-covered plate armor, wielding massive halberd, glowing green eyes behind helm, commanding presence, grassy plains background, epic boss monster design"
+
+# Enemies — Area 2: Ember Hollow
+comfy-cli -W 512 -H 512 -o "assets/enemy/cinder-imp" anime "dark fantasy monster artwork, small mischievous fire imp, charcoal-black skin with glowing ember cracks, curled horns, clawed hands wreathed in flame, ashen ravine background, monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/rock-golem" anime "dark fantasy monster artwork, hulking golem made of volcanic rock, molten cracks glowing orange, heavy stone fists, ember particles floating, ashen ravine background, elite monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/ember-wyrm" anime "dark fantasy monster artwork, massive serpentine fire dragon, scales like cooling lava, glowing molten underbelly, wings of smoke and flame, roaring pose, volcanic chasm background, epic boss monster design"
+
+# Enemies — Area 3: Frostfang Summit
+comfy-cli -W 512 -H 512 -o "assets/enemy/frost-wolf" anime "dark fantasy monster artwork, feral wolf covered in icy fur, glowing pale blue eyes, frost breath, sharp icicle-like fangs, snowy mountain background, monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/ice-golem" anime "dark fantasy monster artwork, hulking golem made of translucent blue ice, frozen core glowing within chest, frost mist trailing, heavy crystalline fists, snowy mountain background, elite monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/snow-sprite" anime "dark fantasy monster artwork, small ethereal ice fairy, pale blue translucent wings, glowing white eyes, swirling snowflake particles, delicate frost patterns, snowy mountain background, monster design"
+comfy-cli -W 512 -H 512 -o "assets/enemy/frostfang-yeti" anime "dark fantasy monster artwork, colossal white-furred yeti, glowing ice-blue eyes, massive clawed hands, icicle fangs bared in roar, frozen mountain peak background, epic boss monster design"
+
 # Enemies — Area 4: Verdant Depths
 comfy-cli -W 512 -H 512 -o "assets/enemy/thorn-viper" anime "dark fantasy monster artwork, vicious green viper with thorn-covered body, glowing yellow eyes, coiled striking pose, venom dripping from fangs, scales texture, dark jungle background, monster design"
 comfy-cli -W 512 -H 512 -o "assets/enemy/spore-fungus" anime "dark fantasy monster artwork, large animated mushroom creature, purple-capped with glowing spots, thick stalk legs, puffing spore clouds, eerie bioluminescent glow, swampy dungeon background, monster design"
