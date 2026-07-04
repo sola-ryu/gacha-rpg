@@ -6,7 +6,7 @@ import { getCharacterDef, computeCharacterStats } from "./characters.js";
 import { findById } from "./utils.js";
 
 const AOE_EFFECT_TYPES = new Set(["damage_aoe", "damage_freeze", "damage_stun", "damage_confuse"]);
-const ENERGY_PER_ACTION = 20;
+const ENERGY_PER_ACTION = 10;
 export const MAX_ROUNDS = 30;
 const FRONT_ROW_TARGET_WEIGHT = 2;
 const BACK_ROW_TARGET_WEIGHT = 1;
@@ -276,7 +276,10 @@ function resolveEffect(log, actor, use, allies, enemies, tauntState) {
   }
 
   if (effect.type === "energy_restore_all") {
-    for (const ally of aliveOf(allies)) ally.energy = Math.min(100, ally.energy + effect.amount);
+    for (const ally of aliveOf(allies)) {
+      ally.energy = Math.min(100, ally.energy + effect.amount);
+      log.push({ type: "energy", actorId: ally.id, energy: ally.energy });
+    }
     log.push({ type: "info", message: `${actor.name} rallies the team, restoring energy!` });
   }
 }
@@ -303,6 +306,8 @@ function takeTurn(actor, playerTeam, enemyTeam, log, tauntState) {
   if (use.type === "ultimate") actor.energy = 0;
   else if (use.type === "skill") actor.energy = Math.max(0, actor.energy - use.cost + ENERGY_PER_ACTION);
   else actor.energy = Math.min(100, actor.energy + ENERGY_PER_ACTION);
+
+  log.push({ type: "energy", actorId: actor.id, energy: actor.energy });
 }
 
 /**

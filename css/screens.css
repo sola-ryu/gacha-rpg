@@ -626,6 +626,9 @@
 .combatant__bars .progress {
   height: 6px;
 }
+.progress--energy {
+  margin-top: 1px;
+}
 
 .battle-log {
   max-height: 220px;

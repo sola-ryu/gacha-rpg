@@ -172,6 +172,9 @@ function renderArena(result, stage) {
     if (entry.type === "defeat" && rowById.has(entry.targetId)) {
       rowById.get(entry.targetId).classList.add("is-defeated");
     }
+    if (entry.type === "energy" && rowById.has(entry.actorId)) {
+      updateEnergyRow(rowById.get(entry.actorId), entry.energy);
+    }
     if (entry.type === "round") {
       roundCounter.textContent = `Round ${entry.round} / ${MAX_ROUNDS}`;
       roundCounter.classList.toggle("is-warning", MAX_ROUNDS - entry.round <= 5);
@@ -233,10 +236,14 @@ function buildCombatantRow(c) {
     el("div", { class: "combatant__body" }, [
       el("div", { class: "combatant__name-row" }, [
         el("span", { class: "combatant__name" }, c.name),
-        el("span", { class: "hp-text" }, `${c.maxHp}/${c.maxHp}`)
+        el("span", {}, [
+          el("span", { class: "hp-text" }, `${c.maxHp}/${c.maxHp}`),
+          el("span", { class: "energy-text" }, ` EP ${c.energy}`)
+        ])
       ]),
       el("div", { class: "combatant__bars" }, [
-        el("div", { class: "progress" }, [el("div", { class: "progress__fill progress__fill--hp", style: "width:100%" })])
+        el("div", { class: "progress" }, [el("div", { class: "progress__fill progress__fill--hp", style: "width:100%" })]),
+        el("div", { class: "progress progress--energy" }, [el("div", { class: "progress__fill progress__fill--energy", style: "width:0%" })])
       ])
     ])
   ]);
@@ -245,8 +252,15 @@ function buildCombatantRow(c) {
 function updateCombatantRow(row, hp, maxHp) {
   if (!row) return;
   const pct = Math.max(0, Math.min(100, (hp / maxHp) * 100));
-  row.querySelector(".progress__fill").style.width = `${pct}%`;
+  row.querySelector(".progress__fill--hp").style.width = `${pct}%`;
   row.querySelector(".hp-text").textContent = `${hp}/${maxHp}`;
+}
+
+function updateEnergyRow(row, energy) {
+  if (!row) return;
+  const pct = Math.max(0, Math.min(100, energy));
+  row.querySelector(".progress__fill--energy").style.width = `${pct}%`;
+  row.querySelector(".energy-text").textContent = ` EP ${energy}`;
 }
 
 function buildDefeatResult(result) {
