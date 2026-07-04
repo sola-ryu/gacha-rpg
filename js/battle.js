@@ -213,13 +213,14 @@ function resolveEffect(log, actor, use, allies, enemies, tauntState) {
 
   if (effect.multiplier != null && effect.type !== "heal") {
     const targets = isAoe ? aliveOf(enemies) : [pickTarget(enemies, tauntState[actor.side])].filter(Boolean);
+    let dmg = 0
     for (const target of targets) {
       if (!target.alive) continue;
       let mult = effect.multiplier;
       if (effect.type === "conditional_damage" && target.modifiers.some((m) => m.positive)) {
         mult = effect.buffMultiplier ?? mult;
       }
-      dealDamage(log, actor, target, mult);
+      dmg = dealDamage(log, actor, target, mult);
       if (!target.alive) continue;
 
       if (effect.debuff) {
