@@ -27,6 +27,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y graphicsmagick
       - name: Convert PNGs to WebP
         run: ./build.sh
+      - name: Remove source PNGs (only WebP needed)
+        run: find . -name '*.png' -delete
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
