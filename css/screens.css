@@ -508,6 +508,29 @@
   flex-direction: column;
   gap: var(--space-5);
 }
+.battle-round-counter {
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--text-2);
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.battle-round-counter.is-warning {
+  color: var(--danger, #e04b4b);
+  border-color: var(--danger, #e04b4b);
+  animation: round-counter-pulse 1s ease-in-out infinite;
+}
+@keyframes round-counter-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
 .battle-teams {
   display: grid;
   grid-template-columns: 1fr auto 1fr;

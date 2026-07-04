@@ -245,8 +245,8 @@ export const GAME_DATA = {
           name: "Whisk of Light",
           type: "basic",
           cost: 0,
-          desc: "Heals target ally for HP × 0.5.",
-          effect: { type: "heal", multiplier: 0.5 },
+          desc: "Heals lowest-HP ally for ATK × 0.6.",
+          effect: { type: "heal", multiplier: 0.3 },
         },
         {
           name: "Feast of Renewal",

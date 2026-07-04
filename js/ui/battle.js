@@ -1,6 +1,6 @@
 import { GAME_DATA } from "../../data.js";
 import { store, spendStamina, addCurrency, grantMaterial, markStageCleared, regenStamina, getStaminaMax } from "../state.js";
-import { simulateBattle, getStageById } from "../battle.js";
+import { simulateBattle, getStageById, MAX_ROUNDS } from "../battle.js";
 import { navigate } from "../router.js";
 import { el, itemIcon, imageOrPlaceholder, findById, toast } from "../utils.js";
 
@@ -130,8 +130,10 @@ function renderArena(result, stage) {
   const logPanel = el("div", { class: "battle-log" });
   const skipBtn = el("button", { class: "btn btn-ghost btn-sm", onclick: () => finishNow() }, "Skip Animation");
   const resultSlot = el("div", {});
+  const roundCounter = el("div", { class: "battle-round-counter" }, `Round 1 / ${MAX_ROUNDS}`);
 
   const arena = el("div", { class: "battle-arena" }, [
+    roundCounter,
     el("div", { class: "battle-teams" }, [
       playerList,
       el("div", { class: "battle-vs" }, "VS"),
@@ -170,6 +172,10 @@ function renderArena(result, stage) {
     if (entry.type === "defeat" && rowById.has(entry.targetId)) {
       rowById.get(entry.targetId).classList.add("is-defeated");
     }
+    if (entry.type === "round") {
+      roundCounter.textContent = `Round ${entry.round} / ${MAX_ROUNDS}`;
+      roundCounter.classList.toggle("is-warning", MAX_ROUNDS - entry.round <= 5);
+    }
 
     const variant = entry.type === "damage" && entry.isCrit ? "crit"
       : entry.type === "heal" ? "heal"
@@ -200,7 +206,7 @@ function renderArena(result, stage) {
     skipBtn.remove();
 
     if (!result.victory) {
-      resultSlot.append(buildDefeatResult());
+      resultSlot.append(buildDefeatResult(result));
       return;
     }
 
@@ -243,10 +249,14 @@ function updateCombatantRow(row, hp, maxHp) {
   row.querySelector(".hp-text").textContent = `${hp}/${maxHp}`;
 }
 
-function buildDefeatResult() {
+function buildDefeatResult(result) {
+  const title = result.timedOut ? "Time's Up..." : "Defeat...";
+  const desc = result.timedOut
+    ? `The battle dragged on past the ${MAX_ROUNDS}-round limit with the enemy still standing. Your team survived, but couldn't finish the fight in time — you'll need more damage output, not more healing.`
+    : "Your team was overwhelmed. Level up and try again.";
   return el("div", { class: "battle-result" }, [
-    el("div", { class: "battle-result__title is-defeat" }, "Defeat..."),
-    el("p", { class: "text-muted" }, "Your team was overwhelmed. Level up and try again."),
+    el("div", { class: "battle-result__title is-defeat" }, title),
+    el("p", { class: "text-muted" }, desc),
     el("button", { class: "btn btn-primary", onclick: () => navigate("battle") }, "Back to Stage Select")
   ]);
 }

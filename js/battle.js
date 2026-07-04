@@ -7,9 +7,16 @@ import { findById } from "./utils.js";
 
 const AOE_EFFECT_TYPES = new Set(["damage_aoe", "damage_freeze", "damage_stun", "damage_confuse"]);
 const ENERGY_PER_ACTION = 20;
-const MAX_ROUNDS = 30;
+export const MAX_ROUNDS = 30;
 const FRONT_ROW_TARGET_WEIGHT = 2;
 const BACK_ROW_TARGET_WEIGHT = 1;
+
+// Heal moves only fire once the lowest-HP ally drops below these thresholds,
+// scaled to how powerful (and how energy-gated) the heal is. Without this,
+// free basic heals get spammed every turn and the whole party sits at max HP.
+const BASIC_HEAL_HP_THRESHOLD = 0.9;
+const SKILL_HEAL_HP_THRESHOLD = 0.7;
+const ULTIMATE_HEAL_HP_THRESHOLD = 0.5;
 
 let uid = 0;
 const nextId = () => `c${++uid}`;
@@ -121,6 +128,15 @@ function lowestHpAlly(allies) {
   return aliveOf(allies).reduce((lowest, c) => (!lowest || c.hp / c.maxHp < lowest.hp / lowest.maxHp ? c : lowest), null);
 }
 
+function isHealMove(skill) {
+  return skill.effect.type === "heal" || skill.effect.healMultiplier != null;
+}
+
+function needsHeal(allies, threshold) {
+  const lowest = lowestHpAlly(allies);
+  return lowest != null && lowest.hp / lowest.maxHp < threshold;
+}
+
 function dealDamage(log, attacker, target, multiplier) {
   const atk = effectiveStat(attacker, "atk");
   const def = effectiveStat(target, "def");
@@ -168,13 +184,14 @@ function healTarget(log, healer, target, amount) {
   });
 }
 
-function chooseSkill(c) {
+function chooseSkill(c, allies) {
   const ultimate = c.skills.find((s) => s.type === "ultimate");
   const skill = c.skills.find((s) => s.type === "skill");
   const basic = c.skills.find((s) => s.type === "basic") ?? c.skills[0];
 
-  if (ultimate && c.energy >= 100) return ultimate;
-  if (skill && c.energy >= skill.cost && Math.random() < 0.55) return skill;
+  if (ultimate && c.energy >= 100 && (!isHealMove(ultimate) || needsHeal(allies, ULTIMATE_HEAL_HP_THRESHOLD))) return ultimate;
+  if (skill && c.energy >= skill.cost && Math.random() < 0.55 && (!isHealMove(skill) || needsHeal(allies, SKILL_HEAL_HP_THRESHOLD))) return skill;
+  if (isHealMove(basic) && !needsHeal(allies, BASIC_HEAL_HP_THRESHOLD)) return null;
   return basic;
 }
 
@@ -274,7 +291,12 @@ function takeTurn(actor, playerTeam, enemyTeam, log, tauntState) {
 
   const allies = actor.side === "player" ? playerTeam : enemyTeam;
   const enemies = actor.side === "player" ? enemyTeam : playerTeam;
-  const use = chooseSkill(actor);
+  const use = chooseSkill(actor, allies);
+
+  if (!use) {
+    log.push({ type: "info", message: `${actor.name} holds position — no one needs aid.` });
+    return;
+  }
 
   resolveEffect(log, actor, use, allies, enemies, tauntState);
 
@@ -294,7 +316,7 @@ export function simulateBattle(state, teamIds, stage) {
 
   let round = 1;
   while (round <= MAX_ROUNDS && aliveOf(playerTeam).length && aliveOf(enemyTeam).length) {
-    log.push({ type: "round", message: `— Round ${round} —` });
+    log.push({ type: "round", round, message: `— Round ${round} —` });
     const order = [...playerTeam, ...enemyTeam]
       .filter((c) => c.alive)
       .sort((a, b) => effectiveStat(b, "spd") - effectiveStat(a, "spd"));
@@ -312,11 +334,13 @@ export function simulateBattle(state, teamIds, stage) {
   }
 
   const victory = aliveOf(enemyTeam).length === 0 && aliveOf(playerTeam).length > 0;
-  log.push({ type: "info", message: victory ? "Victory!" : "Defeat..." });
+  const timedOut = !victory && aliveOf(playerTeam).length > 0 && aliveOf(enemyTeam).length > 0;
+  log.push({ type: "info", message: victory ? "Victory!" : timedOut ? "Time's up..." : "Defeat..." });
 
   const snapshot = (c) => ({ id: c.id, side: c.side, name: c.name, image: c.image, rarity: c.rarity, maxHp: c.maxHp });
   return {
     victory,
+    timedOut,
     log,
     rounds: round - 1,
     combatants: [...playerTeam, ...enemyTeam].map(snapshot)
