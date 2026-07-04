@@ -2430,6 +2430,223 @@ export const GAME_DATA = {
         },
       ],
     },
+    {
+      id: "area4",
+      name: "Verdant Depths",
+      description:
+        "A sun-dappled jungle where colossal flora and venomous predators make the canopy deadly.",
+      stages: [
+        {
+          id: "area4-stage1",
+          name: "Verdant Thicket",
+          staminaCost: 14,
+          enemies: [
+            { template: "thorn-viper", level: 17 },
+            { template: "thorn-viper", level: 17 },
+          ],
+          rewards: {
+            gems: 70,
+            gold: 500,
+            materials: [{ id: "exp_book_legendary", chance: 0.3 }],
+          },
+        },
+        {
+          id: "area4-stage2",
+          name: "Spore Cavern",
+          staminaCost: 15,
+          enemies: [
+            { template: "thorn-viper", level: 18 },
+            { template: "spore-fungus", level: 18 },
+          ],
+          rewards: {
+            gems: 75,
+            gold: 550,
+            materials: [
+              { id: "exp_book_legendary", chance: 0.4 },
+              { id: "upgrade_core_mechanical", chance: 0.3 },
+            ],
+          },
+        },
+        {
+          id: "area4-stage3",
+          name: "Treant Grove",
+          staminaCost: 16,
+          enemies: [
+            { template: "spore-fungus", level: 19 },
+            { template: "spore-fungus", level: 19 },
+            { template: "ancient-treant", level: 19 },
+          ],
+          rewards: {
+            gems: 80,
+            gold: 600,
+            materials: [{ id: "awaken_stone_epic", chance: 0.3 }],
+          },
+        },
+        {
+          id: "area4-stage4",
+          name: "The Elder Dragonfly",
+          staminaCost: 20,
+          boss: true,
+          enemies: [{ template: "elder-dragonfly", level: 20 }],
+          rewards: {
+            gems: 180,
+            gold: 1200,
+            materials: [
+              { id: "awaken_stone_epic", chance: 0.6 },
+              { id: "exp_book_legendary", chance: 0.8 },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      id: "area5",
+      name: "Shadow Crypt",
+      description:
+        "An ancient necropolis where the dead do not rest. Malevolent spirits hunt the living.",
+      stages: [
+        {
+          id: "area5-stage1",
+          name: "Crypt Entrance",
+          staminaCost: 16,
+          enemies: [
+            { template: "shadow-wraith", level: 21 },
+            { template: "shadow-wraith", level: 21 },
+          ],
+          rewards: {
+            gems: 85,
+            gold: 650,
+            materials: [{ id: "exp_book_ancient", chance: 0.5 }],
+          },
+        },
+        {
+          id: "area5-stage2",
+          name: "Hall of Bones",
+          staminaCost: 17,
+          enemies: [
+            { template: "skeletal-soldier", level: 22 },
+            { template: "shadow-wraith", level: 22 },
+          ],
+          rewards: {
+            gems: 90,
+            gold: 700,
+            materials: [
+              { id: "exp_book_ancient", chance: 0.6 },
+              { id: "upgrade_core_mechanical", chance: 0.4 },
+            ],
+          },
+        },
+        {
+          id: "area5-stage3",
+          name: "Deathwalker's Sanctum",
+          staminaCost: 18,
+          enemies: [
+            { template: "skeletal-soldier", level: 24 },
+            { template: "skeletal-soldier", level: 24 },
+            { template: "death-knight", level: 24 },
+          ],
+          rewards: {
+            gems: 100,
+            gold: 800,
+            materials: [
+              { id: "awaken_stone_deep", chance: 0.4 },
+              { id: "exp_book_ancient", chance: 0.5 },
+            ],
+          },
+        },
+        {
+          id: "area5-stage4",
+          name: "The Lich King",
+          staminaCost: 24,
+          boss: true,
+          enemies: [{ template: "lich-king", level: 25 }],
+          rewards: {
+            gems: 220,
+            gold: 1600,
+            materials: [
+              { id: "awaken_stone_deep", chance: 0.6 },
+              { id: "exp_book_legendary", chance: 0.8 },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      id: "area6",
+      name: "Celestial Bastion",
+      description:
+        "A radiant fortress above the clouds, guarded by beings of pure light. Only the strongest may enter.",
+      stages: [
+        {
+          id: "area6-stage1",
+          name: "Pearly Gates",
+          staminaCost: 18,
+          enemies: [
+            { template: "celestial-sentinel", level: 26 },
+            { template: "celestial-sentinel", level: 26 },
+          ],
+          rewards: {
+            gems: 100,
+            gold: 800,
+            materials: [
+              { id: "exp_book_legendary", chance: 0.5 },
+              { id: "upgrade_core_mechanical", chance: 0.3 },
+            ],
+          },
+        },
+        {
+          id: "area6-stage2",
+          name: "Hall of Radiance",
+          staminaCost: 19,
+          enemies: [
+            { template: "light-spirit", level: 27 },
+            { template: "light-spirit", level: 27 },
+          ],
+          rewards: {
+            gems: 110,
+            gold: 850,
+            materials: [
+              { id: "exp_book_legendary", chance: 0.6 },
+              { id: "awaken_stone_epic", chance: 0.3 },
+            ],
+          },
+        },
+        {
+          id: "area6-stage3",
+          name: "Sanctum of Light",
+          staminaCost: 20,
+          enemies: [
+            { template: "celestial-sentinel", level: 28 },
+            { template: "celestial-sentinel", level: 28 },
+            { template: "archangel", level: 28 },
+          ],
+          rewards: {
+            gems: 120,
+            gold: 900,
+            materials: [
+              { id: "exp_book_legendary", chance: 0.6 },
+              { id: "upgrade_core_mechanical", chance: 0.5 },
+            ],
+          },
+        },
+        {
+          id: "area6-stage4",
+          name: "The Luminary's Chamber",
+          staminaCost: 28,
+          boss: true,
+          enemies: [{ template: "the-luminary", level: 30 }],
+          rewards: {
+            gems: 300,
+            gold: 2500,
+            materials: [
+              { id: "awaken_stone_epic", chance: 0.8 },
+              { id: "exp_book_legendary", chance: 1.0 },
+              { id: "upgrade_core_mechanical", chance: 0.6 },
+            ],
+          },
+        },
+      ],
+    },
   ],
 
   // =========================================================================
@@ -2566,6 +2783,156 @@ export const GAME_DATA = {
         spd: 40,
         critRate: 12,
         critDmg: 155,
+      },
+    },
+
+    // -- Area 4: Verdant Depths --
+    "thorn-viper": {
+      name: "Thorn Viper",
+      type: "Grunt",
+      baseStats: {
+        hp: 400,
+        atk: 55,
+        def: 14,
+        spd: 78,
+        critRate: 12,
+        critDmg: 140,
+      },
+    },
+    "spore-fungus": {
+      name: "Spore Fungus",
+      type: "Grunt",
+      baseStats: {
+        hp: 340,
+        atk: 62,
+        def: 10,
+        spd: 35,
+        critRate: 5,
+        critDmg: 130,
+      },
+    },
+    "ancient-treant": {
+      name: "Ancient Treant",
+      type: "Elite",
+      baseStats: {
+        hp: 1000,
+        atk: 48,
+        def: 60,
+        spd: 20,
+        critRate: 5,
+        critDmg: 125,
+      },
+    },
+    "elder-dragonfly": {
+      name: "Elder Dragonfly",
+      type: "Boss",
+      baseStats: {
+        hp: 6000,
+        atk: 110,
+        def: 50,
+        spd: 80,
+        critRate: 18,
+        critDmg: 165,
+      },
+    },
+
+    // -- Area 5: Shadow Crypt --
+    "shadow-wraith": {
+      name: "Shadow Wraith",
+      type: "Grunt",
+      baseStats: {
+        hp: 460,
+        atk: 72,
+        def: 10,
+        spd: 82,
+        critRate: 18,
+        critDmg: 150,
+      },
+    },
+    "skeletal-soldier": {
+      name: "Skeletal Soldier",
+      type: "Grunt",
+      baseStats: {
+        hp: 520,
+        atk: 56,
+        def: 26,
+        spd: 45,
+        critRate: 8,
+        critDmg: 130,
+      },
+    },
+    "death-knight": {
+      name: "Death Knight",
+      type: "Elite",
+      baseStats: {
+        hp: 1200,
+        atk: 65,
+        def: 56,
+        spd: 42,
+        critRate: 12,
+        critDmg: 145,
+      },
+    },
+    "lich-king": {
+      name: "Lich King",
+      type: "Boss",
+      baseStats: {
+        hp: 8000,
+        atk: 130,
+        def: 60,
+        spd: 55,
+        critRate: 20,
+        critDmg: 170,
+      },
+    },
+
+    // -- Area 6: Celestial Bastion --
+    "celestial-sentinel": {
+      name: "Celestial Sentinel",
+      type: "Grunt",
+      baseStats: {
+        hp: 560,
+        atk: 66,
+        def: 32,
+        spd: 55,
+        critRate: 10,
+        critDmg: 135,
+      },
+    },
+    "light-spirit": {
+      name: "Light Spirit",
+      type: "Grunt",
+      baseStats: {
+        hp: 420,
+        atk: 82,
+        def: 16,
+        spd: 88,
+        critRate: 22,
+        critDmg: 155,
+      },
+    },
+    "archangel": {
+      name: "Archangel",
+      type: "Elite",
+      baseStats: {
+        hp: 1500,
+        atk: 78,
+        def: 68,
+        spd: 50,
+        critRate: 15,
+        critDmg: 150,
+      },
+    },
+    "the-luminary": {
+      name: "The Luminary",
+      type: "Boss",
+      baseStats: {
+        hp: 12000,
+        atk: 160,
+        def: 75,
+        spd: 60,
+        critRate: 22,
+        critDmg: 180,
       },
     },
   },
