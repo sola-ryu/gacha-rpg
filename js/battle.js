@@ -14,9 +14,9 @@ const BACK_ROW_TARGET_WEIGHT = 1;
 // Heal moves only fire once the lowest-HP ally drops below these thresholds,
 // scaled to how powerful (and how energy-gated) the heal is. Without this,
 // free basic heals get spammed every turn and the whole party sits at max HP.
-const BASIC_HEAL_HP_THRESHOLD = 0.9;
-const SKILL_HEAL_HP_THRESHOLD = 0.7;
-const ULTIMATE_HEAL_HP_THRESHOLD = 0.5;
+const BASIC_HEAL_HP_THRESHOLD = 0.6;
+const SKILL_HEAL_HP_THRESHOLD = 0.5;
+const ULTIMATE_HEAL_HP_THRESHOLD = 0.35;
 
 let uid = 0;
 const nextId = () => `c${++uid}`;
@@ -129,7 +129,12 @@ function lowestHpAlly(allies) {
 }
 
 function isHealMove(skill) {
-  return skill.effect.type === "heal" || skill.effect.healMultiplier != null;
+  const type = skill.effect.type
+  return type === "heal"
+    || type === "heal_buff_self_def"
+    || type === "heal_all_regen"
+    || type === "heal_all_damage_aoe"
+    || skill.effect.healMultiplier != null
 }
 
 function needsHeal(allies, threshold) {
@@ -241,6 +246,9 @@ function resolveEffect(log, actor, use, allies, enemies, tauntState) {
     if (effect.healPercent) {
       healTarget(log, actor, actor, Math.round(actor.maxHp * effect.healPercent));
     }
+    if (effect.lifesteal) {
+      healTarget(log, actor, actor, Math.round(dmg * effect.lifesteal));
+    }
     if (effect.buffSpd) {
       addModifier(actor, "spd", effect.buffSpd, effect.duration ?? 2, true);
     }
@@ -261,11 +269,24 @@ function resolveEffect(log, actor, use, allies, enemies, tauntState) {
     if (effect.cleanse) {
       for (const ally of aliveOf(allies)) ally.modifiers = ally.modifiers.filter((m) => m.positive);
     }
+    if (effect.damageMultiplier) {
+      for (const enemy of aliveOf(enemies)) {
+        if (!enemy.alive) continue
+        dealDamage(log, actor, enemy, effect.damageMultiplier)
+      }
+    }
   }
 
-  if (effect.type === "buff_self_def") {
-    addModifier(actor, "def", effect.value * 100, effect.duration, true);
-    log.push({ type: "info", message: `${actor.name}'s defense rises sharply.` });
+  if (effect.type === "buff_self_def" || effect.type === "heal_buff_self_def") {
+    if (effect.healPercent) {
+      healTarget(log, actor, actor, Math.round(actor.maxHp * effect.healPercent))
+    }
+    const defVal = effect.defValue ?? effect.value
+    if (defVal) {
+      addModifier(actor, "def", defVal * 100, effect.duration, true)
+      log.push({ type: "info", message: `${actor.name}'s defense rises sharply.` })
+    }
+    return
   }
 
   if (effect.type === "taunt") {
