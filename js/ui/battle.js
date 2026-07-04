@@ -237,8 +237,8 @@ function buildCombatantRow(c) {
       el("div", { class: "combatant__name-row" }, [
         el("span", { class: "combatant__name" }, c.name),
         el("span", {}, [
-          el("span", { class: "hp-text" }, `${c.maxHp}/${c.maxHp}`),
-          el("span", { class: "energy-text" }, ` EP ${c.energy}`)
+          el("span", { class: "hp-text" }, `HP ${c.maxHp}/${c.maxHp}`),
+          el("span", { class: "energy-text" }, `EP ${c.energy || 0}`)
         ])
       ]),
       el("div", { class: "combatant__bars" }, [

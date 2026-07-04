@@ -611,6 +611,7 @@
   justify-content: space-between;
   font-size: 0.78rem;
   margin-bottom: 3px;
+  gap: var(--space-3);
 }
 .combatant__name {
   font-weight: 700;
